@@ -92,12 +92,46 @@ class _MyHomePageState extends State<MyHomePage> {
       //     },
       //     child: Icon(Icons.add),
       //   ),
-      body: Column(
-        children: [
-          Image.asset("assets/images/logo.png"),
-          Image.network(
-              "https://logowik.com/content/uploads/images/flutter5786.jpg"),
-        ],
+      //   body: Column(
+      //     children: [
+      //       Image.asset("assets/images/logo.png"),
+      //       Image.network(
+      //           "https://logowik.com/content/uploads/images/flutter5786.jpg"),
+      //     ],
+      //   ),
+      body: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  child: Text("Column 1"),
+                ),
+                Icon(Icons.add),
+              ],
+            ),
+            Column(
+              children: [
+                Container(
+                  child: Text("Column 2"),
+                ),
+                Icon(Icons.notifications),
+              ],
+            ),
+            Column(
+              children: [
+                Container(
+                  child: Text("Column 3"),
+                ),
+                Icon(Icons.settings),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
