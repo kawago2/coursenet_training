@@ -45,24 +45,52 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.settings),
         ],
       ),
-      body: Center(
-        child: Text(
-          "Course Net X Prakerja",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w800,
-            fontStyle: FontStyle.italic,
-            foreground: Paint()
-              ..shader = ui.Gradient.linear(
-                const Offset(100, 20),
-                const Offset(250, 20),
-                <Color>[
-                  Colors.red,
-                  Colors.yellow,
-                ],
-              ),
+      //   body: Center(
+      //     child: Text(
+      //       "Course Net X Prakerja",
+      //       style: TextStyle(
+      //         fontSize: 20,
+      //         fontWeight: FontWeight.w800,
+      //         fontStyle: FontStyle.italic,
+      //         foreground: Paint()
+      //           ..shader = ui.Gradient.linear(
+      //             const Offset(100, 20),
+      //             const Offset(250, 20),
+      //             <Color>[
+      //               Colors.red,
+      //               Colors.yellow,
+      //             ],
+      //           ),
+      //       ),
+      //     ),
+      //   ),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              print("Elevated Button");
+            },
+            child: Text("Submit"),
           ),
-        ),
+          IconButton(
+            onPressed: () {
+              print("Icon Button");
+            },
+            icon: Icon(Icons.account_circle_rounded),
+          ),
+          TextButton(
+            onPressed: () {
+              print("Text Button");
+            },
+            child: Text("Submit"),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print("Floating Button");
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
