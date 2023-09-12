@@ -64,33 +64,40 @@ class _MyHomePageState extends State<MyHomePage> {
       //       ),
       //     ),
       //   ),
+      //   body: Column(
+      //     children: [
+      //       ElevatedButton(
+      //         onPressed: () {
+      //           print("Elevated Button");
+      //         },
+      //         child: Text("Submit"),
+      //       ),
+      //       IconButton(
+      //         onPressed: () {
+      //           print("Icon Button");
+      //         },
+      //         icon: Icon(Icons.account_circle_rounded),
+      //       ),
+      //       TextButton(
+      //         onPressed: () {
+      //           print("Text Button");
+      //         },
+      //         child: Text("Submit"),
+      //       ),
+      //     ],
+      //   ),
+      //   floatingActionButton: FloatingActionButton(
+      //     onPressed: () {
+      //       print("Floating Button");
+      //     },
+      //     child: Icon(Icons.add),
+      //   ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              print("Elevated Button");
-            },
-            child: Text("Submit"),
-          ),
-          IconButton(
-            onPressed: () {
-              print("Icon Button");
-            },
-            icon: Icon(Icons.account_circle_rounded),
-          ),
-          TextButton(
-            onPressed: () {
-              print("Text Button");
-            },
-            child: Text("Submit"),
-          ),
+          Image.asset("assets/images/logo.png"),
+          Image.network(
+              "https://logowik.com/content/uploads/images/flutter5786.jpg"),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("Floating Button");
-        },
-        child: Icon(Icons.add),
       ),
     );
   }
