@@ -38,12 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: Icon(Icons.add_a_photo_outlined),
         title: Text("Widget Sederhana"),
         actions: [
-          // maksimal penggunaan actions 5
+          // maksimal penggunaan actions 5 icon
           Icon(Icons.history),
           Icon(Icons.notifications),
           Icon(Icons.settings),
         ],
-      )
+      ),
+      body: Center(
+        child: Text("Course Net X Prakerja"),
+      ),
     );
   }
 }
