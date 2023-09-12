@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +46,23 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Center(
-        child: Text("Course Net X Prakerja"),
+        child: Text(
+          "Course Net X Prakerja",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w800,
+            fontStyle: FontStyle.italic,
+            foreground: Paint()
+              ..shader = ui.Gradient.linear(
+                const Offset(100, 20),
+                const Offset(250, 20),
+                <Color>[
+                  Colors.red,
+                  Colors.yellow,
+                ],
+              ),
+          ),
+        ),
       ),
     );
   }
