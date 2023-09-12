@@ -33,6 +33,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.add_a_photo_outlined),
+        title: Text("Widget Sederhana"),
+        actions: [
+          // maksimal penggunaan actions 5
+          Icon(Icons.history),
+          Icon(Icons.notifications),
+          Icon(Icons.settings),
+        ],
+      )
+    );
   }
 }
