@@ -15,7 +15,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     double px = 20;
     // Contoh List
-    List mobil = ["TOYOTA", "HONDA", "MAZDA"];
+    List mobil = ["TOYOTA", "HONDA", "MAZDA", "MITHUBISI"];
     // Contoh Map<key,value>
     Map<String, dynamic> TOYOTA = {
       "warna": "merah",
@@ -33,12 +33,21 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text(widget.title + " Sesi 3"),
       ),
-      body: Column(
-        children: [
-          Text(mobil[0]),
-          Text(TOYOTA["warna"]),
-          Text("${mobil_gabungan[1]["row"]}"),
-        ],
+      //
+      body: ListView.builder(
+        itemCount: mobil_gabungan.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Merk: ${mobil_gabungan[index]["merk"]}"),
+                Text("Harga: ${mobil_gabungan[index]["harga"]}"),
+                Text("Row: ${mobil_gabungan[index]["row"]}"),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
