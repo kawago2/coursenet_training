@@ -14,53 +14,31 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     double px = 20;
+    // Contoh List
+    List mobil = ["TOYOTA", "HONDA", "MAZDA"];
+    // Contoh Map<key,value>
+    Map<String, dynamic> TOYOTA = {
+      "warna": "merah",
+      "row": 3,
+      "harga": "400 juta",
+    };
+
+    List mobil_gabungan = [
+      {"merk": "TOYOTA", "harga": 100 * 1000000, "row": 3},
+      {"merk": "HONDA", "harga": 200 * 1000000, "row": 3},
+      {"merk": "MAZDA", "harga": 300 * 1000000, "row": 2},
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title + " Sesi 3"),
       ),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: px,
-              height: px,
-              color: Colors.red,
-            ),
-            Container(
-              width: px,
-              height: px,
-              color: Colors.blue,
-            ),
-            Container(
-              width: px,
-              height: px,
-              color: Colors.yellow,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: px,
-                  height: px,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: px,
-                  height: px,
-                  color: Colors.blue,
-                ),
-                Container(
-                  width: px,
-                  height: px,
-                  color: Colors.yellow,
-                ),
-              ],
-            )
-          ],
-        ),
+      body: Column(
+        children: [
+          Text(mobil[0]),
+          Text(TOYOTA["warna"]),
+          Text("${mobil_gabungan[1]["row"]}"),
+        ],
       ),
     );
   }
