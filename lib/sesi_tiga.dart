@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -32,6 +36,14 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title + " Sesi 3"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(() => SecondPage());
+            },
+            icon: Icon(Icons.arrow_forward_ios),
+          )
+        ],
       ),
       //
       body: ListView.builder(
@@ -39,7 +51,7 @@ class _MainPageState extends State<MainPage> {
         itemBuilder: (context, index) {
           return Card(
             child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Merk: ${mobil_gabungan[index]["merk"]}"),
                 Text("Harga: ${mobil_gabungan[index]["harga"]}"),
@@ -48,6 +60,99 @@ class _MainPageState extends State<MainPage> {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatefulWidget {
+  const SecondPage({super.key});
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Read Json"),
+      ),
+      body: ReadJson(),
+    );
+  }
+}
+
+class ReadJson extends StatefulWidget {
+  const ReadJson({super.key});
+
+  @override
+  State<ReadJson> createState() => _ReadJsonState();
+}
+
+class _ReadJsonState extends State<ReadJson> {
+  var datajson = {};
+  var regionjson = [];
+
+  Future<void> readJSON() async {
+    final String response = await rootBundle.loadString("assets/data.json");
+    final data = jsonDecode(response);
+    setState(() {
+      datajson = data;
+    });
+  }
+
+  Future<void> RegionJson() async {
+    final String response = await rootBundle.loadString("assets/regions.json");
+    final regions = jsonDecode(response);
+    setState(() {
+      regionjson = regions;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              readJSON();
+            },
+            child: Text("get data"),
+          ),
+          Text("${datajson["name"]}"),
+          ElevatedButton(
+            onPressed: () {
+              RegionJson();
+            },
+            child: Text("get data"),
+          ),
+          regionjson.isEmpty
+              ? Text("Empty")
+              : Expanded(
+                  child: ListView.builder(
+                    itemCount: regionjson.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          onTap: () {
+                            Get.defaultDialog(
+                              title: "${regionjson[index]["name"]}",
+                              middleText:
+                                  "Latitude: ${regionjson[index]["latitude"]}\n" +
+                                      "Longitude: ${regionjson[index]["longitude"]}",
+                            );
+                          },
+                          leading: Text('${index + 1}'),
+                          title: Text("Provinsi: ${regionjson[index]["name"]}"),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+        ],
       ),
     );
   }
